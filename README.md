@@ -39,7 +39,21 @@ This project has been created for learing purposes only.
 
 ## Technologies
 
-Here, we will highlight the key features of our Next.js project for the hotel's website.
+### Framework
+
+**[Next.js](https://nextjs.org/)**
+
+### UI State Management
+
+**[Context API](https://reactjs.org/docs/context.html)**
+
+### DB / API
+
+**[Supabase](https://supabase.com/)**
+
+### Styling
+
+**[TailwindCSS](https://tailwindcss.com/)**
 
 ## Installation
 

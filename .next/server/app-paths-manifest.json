@@ -1,7 +1,7 @@
 {
-  "/about/page": "app/about/page.js",
   "/cabins/page": "app/cabins/page.js",
-  "/account/profile/page": "app/account/profile/page.js",
+  "/about/page": "app/about/page.js",
+  "/account/reservations/page": "app/account/reservations/page.js",
   "/account/page": "app/account/page.js",
-  "/account/reservations/page": "app/account/reservations/page.js"
+  "/account/profile/page": "app/account/profile/page.js"
 }

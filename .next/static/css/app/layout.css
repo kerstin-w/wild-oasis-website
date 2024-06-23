@@ -550,6 +550,9 @@ video {
 .gap-4 {
   gap: 1rem;
 }
+.gap-16 {
+  gap: 4rem;
+}
 .bg-primary-950 {
   --tw-bg-opacity: 1;
   background-color: rgb(20 28 36 / var(--tw-bg-opacity));
@@ -568,6 +571,11 @@ video {
   --tw-text-opacity: 1;
   color: rgb(212 222 231 / var(--tw-text-opacity));
 }
+.transition-colors {
+  transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  transition-duration: 150ms;
+}
 
 /* For data picker */
 
@@ -576,5 +584,10 @@ video {
   --rdp-accent-color: #C69963 !important;
   --rdp-background-color: #B78343 !important;
   margin: 0 !important;
+}
+
+.hover\:text-accent-400:hover {
+  --tw-text-opacity: 1;
+  color: rgb(210 175 132 / var(--tw-text-opacity));
 }
 

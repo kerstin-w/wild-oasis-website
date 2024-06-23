@@ -9,6 +9,7 @@ const josefin = Josefin_Sans({
 });
 
 import '@/app/_styles/globals.css';
+import Header from './_components/Header';
 
 export const metadata = {
   title: {
@@ -25,10 +26,7 @@ export default function RootLayout({ children }) {
       <body
         className={`${josefin.className} bg-primary-950 text-primary-100 min-h-screen`}
       >
-        <header>
-          <Logo />
-        </header>
-        <Navigation />
+        <Header />
         <main>{children}</main>
         <footer>Copyright by The Wild Oasis</footer>
       </body>

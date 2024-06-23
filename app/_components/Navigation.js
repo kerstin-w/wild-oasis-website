@@ -7,7 +7,7 @@ export default function Navigation() {
         <li>
           <Link
             href="/cabins"
-            className="hover:text-accent-400 transition-colors"
+            className="hover:text-accent-400 transition-colors relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-accent-400 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
           >
             Cabins
           </Link>
@@ -15,7 +15,7 @@ export default function Navigation() {
         <li>
           <Link
             href="/about"
-            className="hover:text-accent-400 transition-colors"
+            className="hover:text-accent-400 transition-colors relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-accent-400 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
           >
             About
           </Link>
@@ -23,7 +23,7 @@ export default function Navigation() {
         <li>
           <Link
             href="/account"
-            className="hover:text-accent-400 transition-colors"
+            className="hover:text-accent-400 transition-colors relative w-fit block after:block after:content-[''] after:absolute after:h-[3px] after:bg-accent-400 after:w-full after:scale-x-0 after:hover:scale-x-100 after:transition after:duration-300 after:origin-center"
           >
             Guest area
           </Link>

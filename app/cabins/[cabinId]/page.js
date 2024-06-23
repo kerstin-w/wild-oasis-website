@@ -1,5 +1,5 @@
 import Image from 'next/image';
-import { getCabin } from '@/app/_lib/data-service';
+import { getCabin, getCabins } from '@/app/_lib/data-service';
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from '@heroicons/react/24/solid';
 
 /**
@@ -16,6 +16,18 @@ export async function generateMetadata({ params }) {
     title: `Cabin ${name}`,
     description: `Details and reservation for Cabin ${name}`,
   };
+}
+
+/**
+ * The function generates static parameters by fetching cabin data and mapping it to an array of
+ * objects containing cabin IDs as strings.
+ * @returns An array of objects containing the cabinId property as strings.
+ */
+export async function generateStaticParams() {
+  const cabins = await getCabins();
+  const ids = cabins.map((cabin) => ({ cabinId: String(cabin.id) }));
+
+  return ids;
 }
 
 export default async function Page({ params }) {

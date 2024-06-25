@@ -2,6 +2,10 @@ import { Suspense } from 'react';
 import CabinList from '../_components/CabinList';
 import Spinner from '../_components/Spinner';
 
+/* The line `export const revalidate = 3600;` is setting a constant named `revalidate` with a value of 3600. In this context is defining a revalidation time in seconds. This value might be used for caching or data fetching purposes to determine how often the data should be revalidated
+or refreshed. */
+export const revalidate = 3600;
+
 export const metadata = {
   title: 'Cabins',
 };

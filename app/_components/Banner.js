@@ -4,6 +4,10 @@ import { useState } from 'react';
 import { XMarkIcon } from '@heroicons/react/20/solid';
 import Link from 'next/link';
 
+/**
+ * The `Banner` function creates a banner component with a dismiss button for a summer sale promotion.
+ * @returns The `Banner` component is being returned, which is a functional component. It contains JSX elements for displaying a banner with a summer sale message and a button to dismiss the banner. The banner has a gradient background and some styling for visual effects. The component also includes state management using `useState` hooks to control the visibility and fading out of the banner.
+ */
 export default function Banner() {
   const [isVisible, setIsVisible] = useState(true);
   const [isFadingOut, setIsFadingOut] = useState(false);

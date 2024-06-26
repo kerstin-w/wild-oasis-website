@@ -3,6 +3,12 @@ import { unstable_noStore as noStore } from 'next/cache';
 import CabinCard from '@/app/_components/CabinCard';
 import { getCabins } from '../_lib/data-service';
 
+/**
+ * The `CabinList` function filters and displays cabins based on the specified criteria.
+ * @param {Object} props - The component props.
+ * @param {string} props.filter - The filter option for cabins.
+ * @returns The `CabinList` function returns a JSX element that contains a grid layout of CabinCard components based on the filter option provided. The `displayedCabins` variable is assigned an array of cabins based on the filter option, and then each cabin in the `displayedCabins` array is mapped to a CabinCard component with the corresponding cabin data.
+ */
 async function CabinList({ filter }) {
   // noStore();
   const cabins = await getCabins();

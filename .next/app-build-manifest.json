@@ -54,7 +54,8 @@
     "/cabins/[cabinId]/page": [
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
-      "static/chunks/app/cabins/[cabinId]/page.js"
+      "static/chunks/app/cabins/[cabinId]/page.js",
+      "static/css/app/cabins/[cabinId]/page.css"
     ],
     "/cabins/[cabinId]/not-found": [
       "static/chunks/webpack.js",

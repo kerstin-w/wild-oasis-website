@@ -50,6 +50,16 @@
       "static/chunks/webpack.js",
       "static/chunks/main-app.js",
       "static/chunks/app/account/profile/page.js"
+    ],
+    "/cabins/[cabinId]/page": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/cabins/[cabinId]/page.js"
+    ],
+    "/cabins/[cabinId]/not-found": [
+      "static/chunks/webpack.js",
+      "static/chunks/main-app.js",
+      "static/chunks/app/cabins/[cabinId]/not-found.js"
     ]
   }
 }

@@ -2,6 +2,8 @@ import Image from 'next/image';
 import { EyeSlashIcon, MapPinIcon, UsersIcon } from '@heroicons/react/24/solid';
 import { getCabin, getCabins } from '@/app/_lib/data-service';
 import TextExpander from '@/app/_components/TextExpander';
+import DateSelector from '@/app/_components/DateSelector';
+import ReservationForm from '@/app/_components/ReservationForm';
 
 /**
  * The function generateMetadata retrieves the name of a cabin using its ID and generates metadata with
@@ -84,8 +86,12 @@ export default async function Page({ params }) {
 
       <div>
         <h2 className="text-5xl font-semibold text-center">
-          Reserve today. Pay on arrival.
+          Reserve Cabin {name} today. Pay on arrival.
         </h2>
+        <div>
+          <DateSelector />
+          <ReservationForm />
+        </div>
       </div>
     </div>
   );

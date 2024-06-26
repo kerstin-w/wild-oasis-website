@@ -2,6 +2,19 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { UsersIcon } from '@heroicons/react/24/solid';
 
+/**
+ * Renders a card component for a cabin and displays information about a cabin, including its name, capacity, price, and image, with a link for more details and reservations.
+ *
+ * @param {Object} props - The component props.
+ * @param {Object} props.cabin - The cabin object containing information about the cabin.
+ * @param {string} props.cabin.id - The ID of the cabin.
+ * @param {string} props.cabin.name - The name of the cabin.
+ * @param {number} props.cabin.maxCapacity - The maximum capacity of the cabin.
+ * @param {number} props.cabin.regularPrice - The regular price of the cabin.
+ * @param {number} props.cabin.discount - The discount amount for the cabin.
+ * @param {string} props.cabin.image - The image URL of the cabin.
+ * @returns {JSX.Element} The rendered CabinCard component.
+ */
 function CabinCard({ cabin }) {
   const { id, name, maxCapacity, regularPrice, discount, image } = cabin;
 

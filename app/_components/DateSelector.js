@@ -25,8 +25,8 @@ function isAlreadyBooked(range, datesArr) {
  * The function `DateSelector` in JavaScript defines a component that allows users to select a date range for booking a cabin, displaying pricing information and an option to clear the selected range.
  * @returns The `DateSelector` component is being returned, which includes JSX elements for a date picker and pricing information display.
  */
-function DateSelector() {
-  // CHANGE
+function DateSelector({ settings, cabin, bookedDates }) {
+  // Booking details
   const regularPrice = 23;
   const discount = 23;
   const numNights = 23;
@@ -34,8 +34,7 @@ function DateSelector() {
   const range = { from: null, to: null };
 
   // SETTINGS
-  const minBookingLength = 1;
-  const maxBookingLength = 23;
+  const { minBookingLength, maxBookingLength } = settings;
 
   return (
     <div className="flex flex-col justify-between">

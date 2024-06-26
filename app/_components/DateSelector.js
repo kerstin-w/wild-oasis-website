@@ -3,6 +3,7 @@
 import { isWithinInterval } from 'date-fns';
 import { DayPicker } from 'react-day-picker';
 import 'react-day-picker/dist/style.css';
+import { useReservation } from './ReservationContext';
 
 /**
  * Checks if a given range is already booked in an array of dates.
@@ -26,12 +27,12 @@ function isAlreadyBooked(range, datesArr) {
  * @returns The `DateSelector` component is being returned, which includes JSX elements for a date picker and pricing information display.
  */
 function DateSelector({ settings, cabin, bookedDates }) {
+  const { range, setRange, resetRange } = useReservation();
   // Booking details
   const regularPrice = 23;
   const discount = 23;
   const numNights = 23;
   const cabinPrice = 23;
-  const range = { from: null, to: null };
 
   // SETTINGS
   const { minBookingLength, maxBookingLength } = settings;
@@ -41,6 +42,8 @@ function DateSelector({ settings, cabin, bookedDates }) {
       <DayPicker
         className="pt-12 place-self-center"
         mode="range"
+        onSelect={setRange}
+        selected={range}
         min={minBookingLength + 1}
         max={maxBookingLength}
         fromMonth={new Date()}
@@ -81,7 +84,7 @@ function DateSelector({ settings, cabin, bookedDates }) {
         {range.from || range.to ? (
           <button
             className="border border-primary-800 py-2 px-4 text-sm font-semibold"
-            onClick={() => resetRange()}
+            onClick={resetRange}
           >
             Clear
           </button>

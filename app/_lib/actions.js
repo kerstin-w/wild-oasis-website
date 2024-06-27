@@ -8,3 +8,10 @@ import { signIn } from './auth';
 export async function signInAction() {
   await signIn('google', { redirectTo: '/account' });
 }
+
+/**
+ * The `signOutAction` function signs the user out and redirects to the home page.
+ */
+export async function signOutAction() {
+  await signOut({ redirectTo: '/' });
+}

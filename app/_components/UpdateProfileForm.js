@@ -61,6 +61,10 @@ function UpdateProfileForm({ guest, children }) {
   );
 }
 
+/**
+ * The Button function renders a button element that displays either 'Update profile' or '..updating' based on the pending status from the useFormStatus hook.
+ * @returns The `Button` component is being returned. It is a button element with conditional rendering based on the `pending` status from the `useFormStatus` hook. If `pending` is true, the button will display "..updating", otherwise it will display "Update profile". The button also has specific styling classes and disabled attributes based on the `pending` status.
+ */
 function Button() {
   const { pending } = useFormStatus();
 

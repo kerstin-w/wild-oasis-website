@@ -3,6 +3,7 @@
 import { revalidatePath } from 'next/cache';
 import { auth, signIn, signOut } from './auth';
 import { supabase } from './supabase';
+import { getBookings } from './data-service';
 
 /**
  * The function `updateGuest` updates a guest's profile information in a database after verifying the user's authentication status and input data validity.
@@ -35,6 +36,32 @@ export async function updateGuest(formData) {
   }
 
   revalidatePath('/account/profile');
+}
+
+/**
+ * The function `deleteReservation` deletes a booking based on the provided bookingId after checking user authentication and permission.
+ * @param bookingId - The `bookingId` parameter in the `deleteReservation` function is the unique identifier of the reservation/booking that you want to delete. This ID is used to identify the  specific booking record in the database and ensure that only the authorized user can delete their own reservation.
+ */
+export async function deleteReservation(bookingId) {
+  const session = await auth();
+  if (!session)
+    throw new Error('You must be signed in to delete your reservation');
+
+  const guestBookings = await getBookings(session.user.guestId);
+  const guestBookingIds = guestBookings.map((booking) => booking.id);
+
+  if (!guestBookingIds.includes(bookingId))
+    throw new Error('You are not allowed to delete this booking');
+
+  const { error } = await supabase
+    .from('bookings')
+    .delete()
+    .eq('id', bookingId);
+
+  if (error) {
+    throw new Error('Booking could not be deleted');
+  }
+  revalidatePath('/account/reservations');
 }
 
 /**

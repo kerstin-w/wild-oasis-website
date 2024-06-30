@@ -40,6 +40,37 @@ export async function updateGuest(formData) {
 }
 
 /**
+ * The function `createBooking` creates a new booking in a database with the provided booking data and form data after checking authentication.
+ * @param bookingData - The `bookingData` parameter likely contains information about the booking, such as the cabin details, dates, and pricing. It seems to be used to create a new booking entry in the database.
+ * @param formData - The `formData` parameter in the `createBooking` function is an instance of `FormData`, which is a built-in JavaScript object that allows you to easily construct a set of key/value pairs representing form fields and their values. It is used to collect additional information from the user, such as the number of guests and any special observations. This data is then combined with the booking data to create a new booking entry in the database.
+ */
+export async function createBooking(bookingData, formData) {
+  const session = await auth();
+  if (!session) throw new Error('You must be signed in to create a booking');
+
+  const newBooking = {
+    ...bookingData,
+    guestId: session.user.guestId,
+    numGuests: Number(formData.get('numGuests')),
+    observations: formData.get('observations').slice(0, 1000),
+    extrasPrice: 0,
+    totalPrice: bookingData.cabinPrice,
+    isPaid: false,
+    hasBreakfast: false,
+    status: 'unconfirmed',
+  };
+
+  const { error } = await supabase
+    .from('bookings')
+    .insert([newBooking])
+    // So that the newly created object gets returned!
+    .select()
+    .single();
+
+  if (error) throw new Error('Booking could not be created');
+}
+
+/**
  * The function `deleteReservation` deletes a booking based on the provided bookingId after checking user authentication and permission.
  * @param bookingId - The `bookingId` parameter in the `deleteReservation` function is the unique identifier of the reservation/booking that you want to delete. This ID is used to identify the  specific booking record in the database and ensure that only the authorized user can delete their own reservation.
  */

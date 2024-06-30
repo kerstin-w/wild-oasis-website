@@ -68,6 +68,8 @@ export async function createBooking(bookingData, formData) {
     .single();
 
   if (error) throw new Error('Booking could not be created');
+
+  revalidatePath(`/cabins/${bookingData.cabinId}`);
 }
 
 /**

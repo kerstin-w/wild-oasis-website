@@ -1,4 +1,5 @@
 import { Josefin_Sans } from 'next/font/google';
+import { Analytics, SpeedInsights } from '@vercel/analytics/react';
 
 const josefin = Josefin_Sans({
   subsets: ['latin'],

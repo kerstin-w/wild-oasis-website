@@ -1,7 +1,6 @@
 {
-  "/login/page": "app/login/page.js",
-  "/icon.png/route": "app/icon.png/route.js",
   "/cabins/page": "app/cabins/page.js",
+  "/login/page": "app/login/page.js",
   "/account/reservations/page": "app/account/reservations/page.js",
   "/account/reservations/edit/[bookingId]/page": "app/account/reservations/edit/[bookingId]/page.js",
   "/account/profile/page": "app/account/profile/page.js"

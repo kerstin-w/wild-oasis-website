@@ -4,6 +4,8 @@ Welcome to the Wild Oasis Hotel, a luxurious retreat nestled in the heart of nat
 
 This project has been created for learing purposes only.
 
+**Live Project:** [wild-oasis-website-vert.vercel.app](wild-oasis-website-vert.vercel.app)
+
 ## Table of Contents
 
 - [Business Requirements](#business-requirements)
@@ -58,3 +60,41 @@ This project has been created for learing purposes only.
 ## Installation
 
 This section will guide you through the installation process of the project.
+To install and run this Next.js project, follow these steps:
+
+1. Clone the repository to your local machine:
+
+   ```bash
+   git clone https://github.com/your-username/wild-oasis-website.git
+   ```
+
+2. Navigate to the project directory:
+
+   ```bash
+   cd wild-oasis-website
+   ```
+
+3. Install the dependencies:
+
+   ```bash
+   npm install
+   ```
+
+4. Create a `.env.local` file in the root directory of the project and add the following environment variables:
+
+   ```plaintext
+   NEXT_PUBLIC_SUPABASE_URL=your-supabase-url
+   NEXT_PUBLIC_SUPABASE_ANON_KEY=your-supabase-anon-key
+   ```
+
+   Replace `your-supabase-url` and `your-supabase-anon-key` with your actual Supabase URL and anonymous key.
+
+5. Start the development server:
+
+   ```bash
+   npm run dev
+   ```
+
+6. Open your browser and visit [http://localhost:3000](http://localhost:3000) to view the project.
+
+That's it! You have successfully installed and started the Wild Oasis Next.js project on your local machine.

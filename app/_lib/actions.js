@@ -1,6 +1,7 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
+import { redirect } from 'next/navigation';
 import { auth, signIn, signOut } from './auth';
 import { supabase } from './supabase';
 import { getBookings } from './data-service';
@@ -62,6 +63,50 @@ export async function deleteReservation(bookingId) {
     throw new Error('Booking could not be deleted');
   }
   revalidatePath('/account/reservations');
+}
+
+/**
+ * The function `updateBooking` updates a booking based on the provided form data after performing authentication, authorization, data validation, mutation, error handling, revalidation, and redirection.
+ * @param formData - The `formData` parameter in the `updateBooking` function contains form data submitted by a user for updating a booking. It is expected to be an instance of `FormData`, which is a built-in JavaScript object used to represent form data when working with HTML forms.
+ */
+export async function updateBooking(formData) {
+  const bookingId = Number(formData.get('bookingId'));
+
+  // AUTHENTICATION
+  const session = await auth();
+  if (!session)
+    throw new Error('You must be signed in to delete your reservation');
+
+  // AUTHORIZATION
+  const guestBookings = await getBookings(session.user.guestId);
+  const guestBookingIds = guestBookings.map((booking) => booking.id);
+
+  if (!guestBookingIds.includes(bookingId))
+    throw new Error('You are not allowed to update this booking');
+
+  // BUILDING UPDATE DATA
+  const updatedData = {
+    numGuests: Number(formData.get('numGuests')),
+    observations: formData.get('observations').slice(0, 1000),
+  };
+
+  // MUTATION
+  const { error } = await supabase
+    .from('bookings')
+    .update(updatedData)
+    .eq('id', bookingId)
+    .select()
+    .single();
+
+  // ERROR HANDLING
+  if (error) throw new Error('Booking could not be updated');
+
+  // REVALIDATION
+  revalidatePath(`/account/reservations/`);
+  revalidatePath(`/account/reservations/edit/${bookingId}`);
+
+  // REDIRECTING
+  redirect('/account/reservations');
 }
 
 /**
